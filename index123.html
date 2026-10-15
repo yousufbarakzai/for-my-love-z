@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>داستان عشق ما ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: white;
+    background: linear-gradient(160deg, #09051b, #25103e, #691b52);
+    text-align: center;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+
+.moon {
+    position: fixed;
+    top: 45px;
+    left: 30px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #fff4d2;
+    box-shadow: 0 0 35px #ffe8b8, 0 0 90px #e8b9ff;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 92%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 80px 0 45px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid #ffb8d9;
+    border-radius: 30px;
+    color: #ffd4e8;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    background: #ffffff0a;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 1.8;
+    color: #ffcfdf;
+    text-shadow: 0 0 25px #ff398b80;
+}
+
+.subtitle {
+    color: #e8cce8;
+    font-size: 14px;
+    line-height: 2;
+    margin-top: 8px;
+}
+
+.heart {
+    font-size: 70px;
+    margin: 24px 0;
+    display: inline-block;
+    filter: drop-shadow(0 0 22px #ff2f7d);
+    animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.18); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.12); }
+}
+
+.card {
+    background: linear-gradient(145deg, #ffffff17, #ffffff08);
+    border: 1px solid #ffffff28;
+    border-radius: 26px;
+    padding: 28px 23px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 55px #00000035;
+    margin-top: 12px;
+}
+
+.chapter {
+    color: #ffb6d5;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.story {
+    font-size: 15px;
+    line-height: 2.5;
+    color: #fff0f7;
+    min-height: 155px;
+    white-space: pre-line;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: .3s;
+}
+
+.next {
+    margin-top: 24px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #601638;
+    background: linear-gradient(90deg, #ffc5dd, #ff8fba);
+    box-shadow: 0 5px 25px #ff4e9c35;
+}
+
+.next:active {
+    transform: scale(.97);
+}
+
+.progress {
+    height: 4px;
+    background: #ffffff18;
+    border-radius: 10px;
+    margin-top: 22px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    background: #ffb4d4;
+    transition: width .6s;
+}
+
+.counter {
+    font-size: 11px;
+    color: #c8a9d1;
+    margin-top: 12px;
+}
+
+.footer {
+    color: #d9b5d8;
+    font-size: 12px;
+    line-height: 2.2;
+    margin-top: 28px;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+    opacity: .8;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0); opacity: 0; }
+    15% { opacity: .8; }
+    100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+.hidden {
+    display: none;
+}
+
+.question {
+    margin-top: 22px;
+    font-size: 19px;
+    color: #ffd0e4;
+    line-height: 2;
+}
+
+.answer {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 15px;
+    font-size: 15px;
+    color: white;
+    background: #ff4f91;
+}
+
+.answer.no {
+    background: #ffffff15;
+    border: 1px solid #ffffff30;
+}
+
+.result {
+    margin-top: 20px;
+    line-height: 2.3;
+    color: #ffe1ed;
+    font-size: 15px;
+}
+
+.signature {
+    color: #ffb6d5;
+    font-size: 13px;
+    margin-top: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="moon"></div>
+
+<div class="container">
+
+    <div class="badge">✦ یک داستان از جنس عشق ✦</div>
+
+    <h1>زیر آسمان<br>یک عشق بی‌پایان</h1>
+
+    <p class="subtitle">
+        بعضی داستان‌ها نوشته نمی‌شوند...<br>
+        آن‌ها در قلب آدم‌ها اتفاق می‌افتند. 💕
+    </p>
+
+    <div class="heart">❤️</div>
+
+    <div class="card">
+        <div class="chapter" id="chapter">فصل اول · یک اتفاق زیبا</div>
+
+        <div class="story" id="story">
+            آن شب، آسمان پر از ستاره بود...
+            اما هیچ‌کدام از ستاره‌ها نمی‌دانستند
+            که قرار است یک قلب، برای همیشه تغییر کند.
+
+            گاهی یک نفر وارد زندگی‌ات می‌شود
+            و بدون آن‌که خودش بداند،
+            دنیایت را به زیباترین جای دنیا تبدیل می‌کند. 🌙
+        </div>
+
+        <button class="next" id="next" onclick="nextChapter()">
+            ادامه داستان من و تو 💌
+        </button>
+
+        <div class="progress">
+            <div class="bar" id="bar"></div>
+        </div>
+
+        <div class="counter" id="counter">فصل ۱ از ۵</div>
+
+        <div id="ending" class="hidden">
+            <div class="question">
+                حالا یک سؤال از تو دارم... 🥹💗<br>
+                <strong>حاضری قشنگ‌ترین فصل زندگی‌ات را با عشق شروع کنی؟</strong>
+            </div>
+
+            <button class="answer" onclick="yesAnswer()">
+                آره، با تمام قلبم ❤️
+            </button>
+
+            <button class="answer no" onclick="noAnswer()">
+                هنوز فکر می‌کنم 🙈
+            </button>
+
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        بعضی آدم‌ها اتفاقی می‌آیند،<br>
+        اما آرزو می‌کنی هیچ‌وقت نروند... 💖
+        <div class="signature">ساخته‌شده با عشق ✨</div>
+    </div>
+
+</div>
+
+<script>
+const chapters = [
+{
+title: "فصل اول · یک اتفاق زیبا",
+text: `آن شب، آسمان پر از ستاره بود...
+اما هیچ‌کدام از ستاره‌ها نمی‌دانستند
+که قرار است یک قلب، برای همیشه تغییر کند.
+
+گاهی یک نفر وارد زندگی‌ات می‌شود
+و بدون آن‌که خودش بداند،
+دنیایت را به زیباترین جای دنیا تبدیل می‌کند. 🌙`
+},
+{
+title: "فصل دوم · آشنایی با تو",
+text: `قبل از تو، روزها فقط می‌گذشتند...
+صبح می‌شد، شب می‌رسید
+و زندگی ادامه پیدا می‌کرد.
+
+اما از وقتی تو آمدی،
+منتظر پیام‌ها شدم،
+لبخندهایم دلیل پیدا کردند
+و حتی یک سلام ساده‌ات
+توانست تمام روزم را قشنگ کند. 🥹❤️`
+},
+{
+title: "فصل سوم · فاصله‌ها",
+text: `می‌دانی عشق واقعی چه شکلی است؟
+
+این نیست که همیشه کنار هم باشیم...
+این است که حتی وقتی دوریم،
+یک نفر در قلبت جایی داشته باشد
+که هیچ فاصله‌ای نتواند آن را بگیرد.
+
+شاید نتوانم هر لحظه کنارت باشم،
+اما دوست دارم بدانی
+که بودنت برایم ارزشمند است. 🌹`
+},
+{
+title: "فصل چهارم · یک قول کوچک",
+text: `من قول نمی‌دهم که هر روزمان
+مثل قصه‌ها بی‌نقص باشد...
+
+قول نمی‌دهم هیچ‌وقت ناراحت نشویم
+یا هیچ مشکلی سر راهمان نیاید.
+
+اما اگر روزی دلت گرفت،
+امیدوارم بتوانیم حرف بزنیم.
+
+اگر روزی خسته شدی،
+امیدوارم کنار هم آرامش پیدا کنیم.
+
+چون عشق فقط گفتن «دوستت دارم» نیست؛
+عشق یعنی با احترام، صداقت و مهربانی
+مراقب قلب یکدیگر باشیم. 💗`
+},
+{
+title: "فصل پنجم · حرف آخر",
+text: `اگر یک روز از من بپرسند
+زیباترین اتفاق زندگی‌ات چه بود؟
+
+شاید هزاران خاطره به یادم بیاید،
+اما لبخند می‌زنم و می‌گویم:
+
+زیباترین اتفاق،
+لحظه‌ای بود که فهمیدم
+یک نفر می‌تواند بدون داشتن بال،
+دنیای آدم را پر از پرواز کند.
+
+و اگر این داستان ادامه داشته باشد،
+دوست دارم فصل‌های بعدی‌اش
+با لبخند، اعتماد و عشق نوشته شوند.
+
+این پایان داستان نیست...
+شاید تازه آغاز یک قصه باشد. ❤️🌙`
+}
+];
+
+let current = 0;
+
+function nextChapter() {
+    if (current < chapters.length - 1) {
+        current++;
+        document.getElementById("chapter").textContent =
+            chapters[current].title;
+        document.getElementById("story").textContent =
+            chapters[current].text;
+
+        document.getElementById("bar").style.width =
+            ((current + 1) / chapters.length * 100) + "%";
+
+        document.getElementById("counter").textContent =
+            "فصل " + (current + 1) + " از " + chapters.length;
+
+        if (current === chapters.length - 1) {
+            document.getElementById("next").textContent =
+                "یک سؤال مخصوص تو دارم 💍";
+        }
+    } else {
+        document.getElementById("ending").classList.remove("hidden");
+        document.getElementById("next").classList.add("hidden");
+        document.getElementById("bar").style.width = "100%";
+        document.getElementById("counter").textContent =
+            "پایان داستان... یا شروع یک قصه جدید؟ 💕";
+        document.getElementById("ending").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+}
+
+function yesAnswer() {
+    document.getElementById("result").innerHTML =
+        "🥹❤️ پس بیا هر روز، یک خاطره قشنگ بسازیم.<br>" +
+        "نه برای داشتن یک عشق بی‌نقص،<br>" +
+        "بلکه برای ساختن عشقی واقعی،<br>" +
+        "که در آن هر دو خوشحال و آزاد باشیم. 🌹<br><br>" +
+        "💌 تو لایق زیباترین عشق دنیایی!";
+    burstHearts();
+}
+
+function noAnswer() {
+    document.getElementById("result").innerHTML =
+        "🙈 اشکالی نداره، برای جواب دادن عجله نکن!<br>" +
+        "قشنگ‌ترین جواب، جوابی است که<br>" +
+        "از ته قلبت بیاید. 💗";
+}
+
+function burstHearts() {
+    for (let i = 0; i < 25; i++) {
+        setTimeout(createHeart, i * 80);
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.textContent = ["❤️", "💗", "💕", "💖", "🌹"][
+        Math.floor(Math.random() * 5)
+    ];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (16 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 9000);
+}
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    star.style.animationDuration = (1 + Math.random() * 3) + "s";
+    stars.appendChild(star);
+}
+
+setInterval(createHeart, 1000);
+</script>
+
+</body>
+</html>
